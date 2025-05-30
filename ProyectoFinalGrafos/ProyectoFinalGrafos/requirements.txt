@@ -1,0 +1,10 @@
+
+# Dependencias principales para GUI y visualización
+matplotlib>=3.5.0
+networkx>=2.6.0
+
+# tkinter - Interfaz gráfica (incluido con Python estándar)
+# csv - Manejo de archivos CSV (incluido con Python estándar)  
+# os - Operaciones del sistema (incluido con Python estándar)
+# sys - Funciones del sistema (incluido con Python estándar)
+# typing - Type hints (incluido desde Python 3.5+)
