@@ -9,6 +9,7 @@ from .config import DEFAULT_CSV, SAMPLE_EDGES
 
 try:
     import matplotlib
+    import csv
     matplotlib.use("TkAgg")
     import matplotlib.pyplot as plt
     from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -138,16 +139,21 @@ class GraphApp:
 
     def _load_csv(self):
         path = filedialog.askopenfilename(filetypes=[("CSV", "*.csv")])
-        if path:
+        if not path:
+            return
+        try:
+            self.validar_archivo(path)
             self.model.load_from_csv(path)
             self._refresh_combo()
             self._update_info()
             self._invalidate_layout()
             self._draw_graph()
             messagebox.showinfo("Cargar", f"Grafo cargado desde {path}")
-
+        except Exception as e:
+            messagebox.showerror("Error de carga de archivo", e)
     def _save_csv(self):
-        path = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV", "*.csv")])
+     #  path = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV", "*.csv")])
+        path = DEFAULT_CSV
         if path:
             if self.model.save_to_csv(path):
                 messagebox.showinfo("Guardar", f"Grafo guardado en {path}")
@@ -309,3 +315,18 @@ class GraphApp:
         else:
             self.animation_running = False
             print("[INFO] Animación completada")
+
+    def validar_archivo(self, path: str):
+        with open(path, newline='', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            for i, row in enumerate(reader, start=1):
+                if len(row) != 3:
+                    raise ValueError(f"Línea {i}: se esperaban 3 columnas, pero se encontraron {len(row)}.")
+                u, v, w = row
+                u, v = u.strip(), v.strip()
+                if not u or not v:
+                    raise ValueError(f"Línea {i}: los nombres de los nodos no pueden estar vacíos.")
+                try:
+                    weight = float(w)
+                except ValueError:
+                    raise ValueError(f"Línea {i}: el peso '{w}' no es un número válido.")
