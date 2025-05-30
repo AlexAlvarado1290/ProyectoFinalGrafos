@@ -1,10 +1,15 @@
 Guatemala City,Mixco,11.0
-Guatemala City,Villa Nueva,13.0
 Guatemala City,Chinautla,10.0
 Guatemala City,Santa Catarina Pinula,11.0
+Guatemala City,San Lucas Sacatepequez,11.0
+Guatemala City,Santa Rosa,18.0
 Mixco,San Lucas Sacatepequez,13.0
-Mixco,Villa Nueva,18.0
-Villa Nueva,Amatitlan,16.0
-Villa Nueva,San Miguel Petapa,8.0
-Chinautla,San Jose del Golfo,19.0
-Amatitlan,San Miguel Petapa,10.0
+Mixco,Quetzaltenango,11.0
+Mixco,San Vicente Pacaya,10.0
+Mixco,Chinautla,13.6
+Chinautla,Quetzaltenango,12.0
+Chinautla,Santa Rosa,12.5
+Santa Catarina Pinula,Quetzaltenango,13.8
+Santa Catarina Pinula,San Lucas Sacatepequez,14.6
+Santa Rosa,San Vicente Pacaya,10.0
+Quetzaltenango,San Vicente Pacaya,50.0
